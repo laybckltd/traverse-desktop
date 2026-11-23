@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Traverse
+Comment=Interactive KTU S4 CSE study platform with offline notes, flashcards & mock exam lab
+Exec=sh -c "google-chrome --app=https://wonderful-creponne-588f15.netlify.app || chromium --app=https://wonderful-creponne-588f15.netlify.app || microsoft-edge --app=https://wonderful-creponne-588f15.netlify.app || xdg-open https://wonderful-creponne-588f15.netlify.app"
+Icon=traverse
+Terminal=false
+Categories=Education;Science;Utility;
+StartupWMClass=traverse
+StartupNotify=true

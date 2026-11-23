@@ -1,0 +1,48 @@
+name: Build Traverse Desktop (Windows & Linux)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build-desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            script: npm run build:win
+            artifact: traverse-windows-installer
+          - os: ubuntu-latest
+            script: npm run build:linux
+            artifact: traverse-linux-packages
+
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: electron
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Desktop Dependencies
+        run: npm install
+
+      - name: Package Desktop Installers
+        run: ${{ matrix.script }}
+
+      - name: Upload Desktop Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: |
+            electron/dist/*.exe
+            electron/dist/*.AppImage
+            electron/dist/*.deb
+            electron/dist/*.tar.gz
