@@ -2,11 +2,13 @@
   "name": "traverse-desktop",
   "version": "1.0.0",
   "description": "Traverse desktop web application for Windows and Linux",
+  "author": "laybckltd <support@laybck.com>",
+  "homepage": "https://wonderful-creponne-588f15.netlify.app",
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
-    "build:win": "electron-builder --win nsis portable",
-    "build:linux": "electron-builder --linux AppImage deb tar.gz"
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux"
   },
   "devDependencies": {
     "electron": "^33.2.0",
@@ -32,6 +34,7 @@
         "deb",
         "tar.gz"
       ],
+      "maintainer": "laybckltd <support@laybck.com>",
       "category": "Education",
       "icon": "build/icon.png"
     }
